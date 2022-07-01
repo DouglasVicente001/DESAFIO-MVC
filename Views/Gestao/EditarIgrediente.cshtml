@@ -1,0 +1,29 @@
+@model VirtualMagazine.DTO.UnidadeDeMedidaDTO
+@{
+    Layout="_LayoutAdmin";
+}
+<h3>Editar igrediente</h3>
+<hr>
+<form class="form-horizontal" asp-controller="Igredientes" asp-action="Atualizar" method="POST"> 
+<input type="hidden" asp-for ="Id">
+
+<label asp-for="Nome">Nome do igrediente</label>
+<input type="text" asp-for ="Nome" class="form-control" placeholder="ex: queijo provolone">
+<span asp-validation-for="Nome"></span><br>
+
+<label asp-for="ReceitaId">Receita</label>
+<select class="form-control" asp-for="ReceitaId" asp-items='@(new SelectList(@ViewBag.Receitas,"Id","Nome"))'></select>
+<br>
+<label asp-for="UnidadeDeMedidaId">Unidade de medida</label>
+<select class="form-control" asp-for="UnidadeDeMedidaId" asp-items='@(new SelectList(@ViewBag.UnidadeDeMedidas,"Id","Nome"))'></select>
+<br>
+
+@* <label asp-for="Medicao">Medição</label>
+<select class="form-control" asp-for="Medicao">
+    <option value="0">Litro</option>
+    <option value="1">Kilo</option>
+    <option value="2">Unidade</option>
+</select> *@
+
+<button class ="btn btn-success">Atualizar</button> 
+</form>

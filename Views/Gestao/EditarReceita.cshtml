@@ -1,0 +1,24 @@
+@model VirtualMagazine.DTO.ReceitaDTO
+@{
+    Layout="_LayoutAdmin";
+}
+<h3>Editar Receitas</h3>
+<hr>
+<form class="form-horizontal" asp-controller="Receitas" asp-action="Atualizar" method="POST"> 
+<input type="hidden" asp-for ="Id">
+<label asp-for="Nome">Nome</label> 
+<input type="text" asp-for ="Nome" class="form-control" placeholder="Nome da receita"><br>
+<span asp-validation-for="Nome"></span>
+<br>
+<label asp-for="TempoPreparo">Tempo</label> 
+<input type="text" asp-for ="TempoPreparo" class="form-control" placeholder="Tempo estimado: 50 minutos"><br>
+<span asp-validation-for="TempoPreparo"></span>
+<br>
+<label asp-for="ModoPreparo">Modo de preparo</label>
+<textarea type="text" class="form-control" asp-for="ModoPreparo" rows="3" placeholder="1 litro de leite ao fogo por 10 minutos"></textarea>
+<span asp-validation-for="ModoPreparo"></span>
+<br>
+
+<br>
+<button class ="btn btn-success">Atualizar</button> 
+</form> 

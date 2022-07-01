@@ -1,0 +1,14 @@
+@model VirtualMagazine.DTO.IgredienteDTO
+@{
+    Layout="_LayoutAdmin";
+}
+<h3>Editar unidades de medida</h3>
+<hr>
+<form class="form-horizontal" asp-controller="UnidadeDeMedidas" asp-action="Atualizar" method="POST"> 
+<input type="hidden" asp-for ="Id">
+<label asp-for="Nome">Unidade de medida</label>
+<textarea type="text" class="form-control" asp-for="Nome" rows="3" placeholder="50 gramas de queijo provolone"></textarea>
+<span asp-validation-for="Nome"></span><br>
+<span asp-validation-for="Nome"></span><br>
+<button class ="btn btn-success">Atualizar</button> 
+</form> 

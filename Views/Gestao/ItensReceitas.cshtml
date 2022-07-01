@@ -1,0 +1,68 @@
+@model IEnumerable<VirtualMagazine.Models.Igrediente>
+@{
+    Layout="_LayoutAdmin";
+}
+
+<h2>Tabela de itens </h2><br>
+
+<script>
+    $(document).ready( function () {
+    $('#igredientes').DataTable({
+        "info" : false,
+        "language" : {
+        "lengthMenu": "Mostrando _MENU_registros por página",
+        "zeroRecords": "Desculpa, nada encontrado",
+        "info": "Mostrando página _PAGE_ de _PAGES_",
+        "infoEmpty": "Nenhum registro disponível",
+        "search": "Buscar:",
+        "paginate": {
+            "first":     "Primeiro",
+            "last":     "Último",
+            "next":     "Próximo",
+            "previous":   "Anterior"
+            }
+        }  
+    });
+} );
+</script>
+
+<table id="igredientes"class="table table-striped table-bordered"> 
+    <thead>
+    <tr>
+        <th>Id</th>
+        <th>Receita</th>
+        <th>Igrediente</th>
+        <th>UnidadeDeMedida</th>
+        <th>Medição</th>
+        <th>Ações</th>
+    </tr>
+    </thead>
+    <tbody>
+        @foreach(var igrediente in Model){
+            <tr>
+                <td>@igrediente.Id</td>
+                <td>@igrediente.Receita.Nome</td>
+                <td>@igrediente.Nome</td>
+                <td>@igrediente.UnidadeDeMedida.Nome</td>
+                
+                <td>
+                @if(@igrediente.Medicao == 0) {
+                    <span>Litro</span>
+                }else if(@igrediente.Medicao == 1) {
+                    <span>Kilo</span>
+                } else {
+                    <span>Unidade</span>
+                }
+                </td>
+                <td>
+                <a class="btn btn-primary" href="/Gestao/EditarIgrediente/@igrediente.Id">Editar</a>
+
+                <form asp-action="Deletar" asp-controller="Igredientes" style="display: inline;">
+                    <input type="hidden" name="id" id="Id" value="@igrediente.Id" />
+                    <button class="btn btn-danger" >Deletar</button> 
+                </form>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
